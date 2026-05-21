@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "../api/axios";
 
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -245,6 +246,15 @@ const Login = () => {
               { loading? "Logging in...": "Login" }
 
             </button>
+            <p className="mt-3 text-center">
+
+  Don't have an account?
+
+  <Link to="/signup">
+    {" "}Signup
+  </Link>
+
+</p>
 
           </form>
 

@@ -1,20 +1,14 @@
-from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView
 
-from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 
-from rest_framework.permissions import IsAuthenticated
-
-from .serializers import UserSerializer
+from .serializers import RegisterSerializer
 
 
-class UserProfileView(APIView):
+class RegisterView(CreateAPIView):
 
-    permission_classes = [IsAuthenticated]
+    serializer_class =   RegisterSerializer
 
-    def get(self, request):
-
-        serializer = UserSerializer(
-            request.user
-        )
-
-        return Response(serializer.data)
+    permission_classes = [
+        AllowAny
+    ]

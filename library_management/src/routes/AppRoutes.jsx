@@ -11,6 +11,7 @@ import Authors from "../pages/Authors";
 import BorrowBooks from "../pages/BorrowBooks";
 import MyBorrowedBooks from "../pages/MyBorrowedBooks";
 import NotFound from "../pages/NotFound";
+import Signup from "../pages/Signup";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 
@@ -26,6 +27,11 @@ const AppRoutes = () => {
           path="/"
           element={<Login />}
         />
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
+        
 
         <Route
           path="/dashboard"
