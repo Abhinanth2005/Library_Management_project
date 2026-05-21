@@ -33,46 +33,30 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    setLoading(true);
+  try {
 
-    setErrors({});
+    await axios.post(
+      "users/register/",
+      formData
+    );
 
-    try {
+    alert(
+      "Signup Successful"
+    );
 
-      await axios.post(
-        "users/register/",
-        formData
-      );
+    navigate("/login");
 
-      alert(
-        "Account Created Successfully"
-      );
+  } catch (error) {
 
-      navigate("/");
+    console.log(
+      error.response.data
+    );
 
-    } catch (error) {
-
-      if (error.response?.data) {
-
-        setErrors(
-          error.response.data
-        );
-
-      } else {
-
-        setErrors({
-          api:
-          "Something went wrong"
-        });
-      }
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
+    alert("Signup Failed");
+  }
+};
 
   return (
 

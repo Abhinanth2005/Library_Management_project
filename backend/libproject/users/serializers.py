@@ -24,8 +24,8 @@ class RegisterSerializer(
 ):
 
     password = serializers.CharField(
-            write_only=True
-        )
+        write_only=True
+    )
 
     class Meta:
 
@@ -37,26 +37,17 @@ class RegisterSerializer(
             "password",
         ]
 
-    def create(
-        self,
-        validated_data
-    ):
+    def create(self, validated_data):
 
         user = CustomUser.objects.create_user(
                 username=
-                validated_data[
-                    "username"
-                ],
+                validated_data["username"],
 
                 email=
-                validated_data[
-                    "email"
-                ],
+                validated_data["email"],
 
                 password=
-                validated_data[
-                    "password"
-                ],
+                validated_data["password"],
             )
 
         return user
